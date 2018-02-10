@@ -24,3 +24,27 @@ class Query(object):
 
     def resolve_all_ingredients(self, info, **kwargs):
         return Ingredient.objects.select_related('category').all()
+
+    def resolve_category(self, info, **kwargs):
+        id = kwargs.get('id')
+        name = kwargs.get('name')
+
+        if id is not None:
+            return Category.objects.get(pk=id)
+
+        if name is Not None:
+            return Category.objects.get(name=name)
+
+        return None
+
+    def resolve_ingredient(self, info, **kwargs):
+        id = kwargs.get('id')
+        name = kwargs.get('name')
+
+        if id is not None:
+            return Ingredient.objects.get(pk=id)
+
+        if name is not None:
+            return Ingredient.objects.get(name__contains=name)
+
+        return None
