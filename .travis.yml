@@ -7,6 +7,9 @@ install:
 - python manage.py migrate
 script:
 - pytest
+branches:
+  only:
+    - master
 deploy:
   provider: heroku
   app: mysterious-thicket-84893
