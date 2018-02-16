@@ -32,7 +32,7 @@ class Query(object):
         if id is not None:
             return Category.objects.get(pk=id)
 
-        if name is Not None:
+        if name is not None:
             return Category.objects.get(name=name)
 
         return None
